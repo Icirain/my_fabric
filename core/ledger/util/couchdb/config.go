@@ -20,7 +20,6 @@ import (
 	"time"
 
 	"github.com/spf13/viper"
-	"fmt"
 )
 
 // CouchDBDef contains parameters
@@ -44,8 +43,8 @@ func GetCouchDBDefinition() *CouchDBDef {
 	requestTimeout := viper.GetDuration("ledger.state.couchDBConfig.requestTimeout")
 	//collectionname := viper.GetString("ledger.state.mongoDBConfig.collection_name")
 	//collectionname := viper.GetString("ledger.state.mongoDBConfig.collection_name")
-	collectionname := viper.GetString("ledger.state.mongoDBConfig.collection_name")
-	fmt.Println(collectionname)
+	//conf := statemongodb.GetMongoDBConf()
+	//fmt.Println(conf)
 
 	return &CouchDBDef{couchDBAddress, username, password, maxRetries, maxRetriesOnStartup, requestTimeout}
 }

@@ -406,7 +406,7 @@ ledger:
     # CouchDB - store state database in CouchDB
     # MongoDB - store state databse in MongoDB
 
-    stateDatabase: goleveldb
+    stateDatabase: MongoDB
     couchDBConfig:
        # It is recommended to run CouchDB on the same server as the peer, and
        # not map the CouchDB container port to a server port in docker-compose.

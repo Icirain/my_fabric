@@ -38,6 +38,7 @@ func TestIsCouchDBEnabledDefault(t *testing.T) {
 	testutil.AssertEquals(t, defaultValue, false) //test default config is false
 }
 
+
 func TestIsCouchDBEnabled(t *testing.T) {
 	setUpCoreYAMLConfig()
 	defer ledgertestutil.ResetConfigToDefaultValues()

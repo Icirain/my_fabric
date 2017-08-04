@@ -3,9 +3,8 @@ package statemongodb
 import (
 	"bytes"
 	"errors"
-	"gopkg.in/mgo.v2"
 	"labix.org/v2/mgo/bson"
-        "test_demo_go/mongodbhelper"
+        "github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb/mongodbhelper"
 	"github.com/hyperledger/fabric/common/flogging"
 	//"github.com/hyperledger/fabric/common/ledger/util/leveldbhelper"
 	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb"
@@ -19,6 +18,8 @@ import (
 
 	//"reflect"
 	//"github.com/hyperledger/fabric/gossip/state"
+	ledgertestutil "github.com/hyperledger/fabric/core/ledger/testutil"
+	"mgo-2"
 )
 
 
@@ -41,10 +42,12 @@ type VersionedDB struct {
 }
 
 func NewVersionedDBProvider() *VersionedDBProvider{
-	logger.Debugf("Constrcuting MongDB provider")
+	ledgertestutil.SetupCoreYAMLConfig()
 	conf := GetMongoDBConf()
+	//fmt.Println(conf.Dialinfo.Addrs)
 	provider := mongodbhelper.NewProvider(conf)
-	return &VersionedDBProvider{dbProvider:provider}
+	return &VersionedDBProvider{provider}
+
 }
 
 

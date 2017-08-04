@@ -21,6 +21,8 @@ import (
 
 	"github.com/hyperledger/fabric/core/config"
 	"github.com/spf13/viper"
+//	"fmt"
+	ledgertestutil "github.com/hyperledger/fabric/core/ledger/testutil"
 )
 
 //IsCouchDBEnabled exposes the useCouchDB variable
@@ -30,6 +32,21 @@ func IsCouchDBEnabled() bool {
 		return true
 	}
 	return false
+}
+
+func GetStateDBoption()int {
+	ledgertestutil.SetupCoreYAMLConfig()
+	option := viper.GetString("ledger.state.stateDatabase")
+	//fmt.Println("database : ", option)
+	if option == "goleveldb"{
+		return 1
+	}else if option == "CouchDB"{
+		return 2
+	}else if option == "MongoDB"{
+		return 3
+	}else{
+		return 0
+	}
 }
 
 // GetRootPath returns the filesystem path.

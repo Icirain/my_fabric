@@ -4,7 +4,7 @@ import (
 	"testing"
 	"os"
 	"github.com/hyperledger/fabric/common/ledger/testutil"
-	"gopkg.in/mgo.v2"
+	"mgo-2"
 )
 
 

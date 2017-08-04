@@ -35,6 +35,7 @@ import (
 	"github.com/hyperledger/fabric/protos/common"
 	"github.com/hyperledger/fabric/protos/utils"
 	"github.com/syndtr/goleveldb/leveldb"
+	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb/statemongodb"
 )
 
 var (
@@ -82,17 +83,26 @@ func NewProvider() (ledger.PeerLedgerProvider, error) {
 
 	// Initialize the versioned database (state database)
 	var vdbProvider statedb.VersionedDBProvider
-	if !ledgerconfig.IsCouchDBEnabled() {
+	option := ledgerconfig.GetStateDBoption()
+	//fmt.Println("in this way",option)
+	if option == 1{
 		logger.Debug("Constructing leveldb VersionedDBProvider")
 		vdbProvider = stateleveldb.NewVersionedDBProvider()
-	} else {
+	}else if option == 2{
 		logger.Debug("Constructing CouchDB VersionedDBProvider")
 		var err error
 		vdbProvider, err = statecouchdb.NewVersionedDBProvider()
 		if err != nil {
 			return nil, err
 		}
+	}else if option == 3{
+		//fmt.Println("In right position")
+		logger.Debug("Constructing MongoDB VersionedDBProvider")
+		vdbProvider = statemongodb.NewVersionedDBProvider()
+	}else{
+		panic(errors.New("Incorrectness int the core.yaml file"))
 	}
+
 
 	// Initialize the history database (index for history of values by key)
 	var historydbProvider historydb.HistoryDBProvider

@@ -4,10 +4,10 @@ import (
 	//"strings"
         "testing"
         "github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb"
-	"test_demo_go/mongodbhelper"
 
-	"gopkg.in/mgo.v2"
+	"mgo-2"
 //	"gopkg.in/mgo.v2/bson"
+	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb/mongodbhelper"
 )
 
 

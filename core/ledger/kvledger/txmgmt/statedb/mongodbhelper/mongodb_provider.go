@@ -3,7 +3,7 @@ package mongodbhelper
 import (
 	"sync"
 	"bytes"
-	"gopkg.in/mgo.v2"
+        "mgo-2"
 )
 
 var dbNameKeySep = []byte{0x00}

@@ -1,9 +1,11 @@
 package statemongodb
 
-import ("test_demo_go/mongodbhelper"
+import (
 	"github.com/spf13/viper"
-	"gopkg.in/mgo.v2"
 	"fmt"
+	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb/mongodbhelper"
+        "mgo-2"
+
 )
 
 func GetMongoDBConf() *mongodbhelper.Conf{

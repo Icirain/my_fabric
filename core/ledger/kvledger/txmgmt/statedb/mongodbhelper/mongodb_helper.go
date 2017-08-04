@@ -1,12 +1,12 @@
 package mongodbhelper
 
 import (
-	"gopkg.in/mgo.v2"
 	"labix.org/v2/mgo/bson"
 	"fmt"
 	"github.com/hyperledger/fabric/common/flogging"
 	"sync"
 	//"encoding/json"
+	"mgo-2"
 )
 
 type Kv_pair struct {
