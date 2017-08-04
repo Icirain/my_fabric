@@ -401,9 +401,11 @@ ledger:
   blockchain:
 
   state:
-    # stateDatabase - options are "goleveldb", "CouchDB"
+    # stateDatabase - options are "goleveldb", "CouchDB" and "MongoDB"
     # goleveldb - default state database stored in goleveldb.
     # CouchDB - store state database in CouchDB
+    # MongoDB - store state databse in MongoDB
+
     stateDatabase: goleveldb
     couchDBConfig:
        # It is recommended to run CouchDB on the same server as the peer, and
