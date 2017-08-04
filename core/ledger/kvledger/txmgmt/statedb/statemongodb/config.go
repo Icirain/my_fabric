@@ -1,8 +1,9 @@
 package statemongodb
 
 import ("test_demo_go/mongodbhelper"
-	"github.com/hyperledger/fabric/vendor/github.com/spf13/viper"
+	"github.com/spf13/viper"
 	"gopkg.in/mgo.v2"
+	"fmt"
 )
 
 func GetMongoDBConf() *mongodbhelper.Conf{
@@ -10,8 +11,10 @@ func GetMongoDBConf() *mongodbhelper.Conf{
 	url := viper.GetString("ledger.state.MongoDBConfig.url")
 	username := viper.GetString("ledger.state.MongoDBConfig.username")
 	password := viper.GetString("ledger.state.MongoDBConfig.password")
-	collectionname := viper.GetString("ledger.state.MongoDBConfig.collectionname")
-	databasename := viper.GetString("ledger.state.MongoDBConfig.databasename")
+	collectionname := viper.GetString("ledger.state.mongoDBConfig.collection_name")
+	databasename := viper.GetString("ledger.state.mongoDBConfig.database_name")
+	fmt.Println(collectionname)
+	fmt.Println("test : ",viper.GetString("ledger.state.couchDBConfig.couchDBAddress"))
 	dialinfo, err := mgo.ParseURL(url)
 	if err != nil{
 		panic(err)

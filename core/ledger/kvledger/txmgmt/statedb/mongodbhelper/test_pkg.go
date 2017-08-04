@@ -46,6 +46,7 @@ func newTestProviderEnv(t *testing.T, path string) *testDBProviderEnv {
 }
 
 func (dbEnv *testDBEnv) cleanup() {
+
 	if dbEnv.db != nil {
 		dbEnv.db.Close()
 	}
