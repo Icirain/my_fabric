@@ -1,13 +1,11 @@
 package statemongodb
 
 import (
-	//"strings"
-        "testing"
-        "github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb"
-
-	"mgo-2"
-//	"gopkg.in/mgo.v2/bson"
+	"testing"
+	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb"
 	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb/mongodbhelper"
+	"mgo-2"
+
 )
 
 

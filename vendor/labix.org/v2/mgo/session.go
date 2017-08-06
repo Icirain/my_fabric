@@ -715,8 +715,6 @@ const (
 	RoleClusterAdmin Role = "clusterAdmin"
 )
 
-
-
 // UpsertUser updates the authentication credentials and the roles for
 // a MongoDB user within the db database. If the named user doesn't exist
 // it will be created.

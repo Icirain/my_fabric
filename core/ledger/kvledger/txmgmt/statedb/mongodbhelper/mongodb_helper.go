@@ -99,7 +99,7 @@ func (dbInst *DB) Get(key string) ([]byte, error){
 	       logger.Debugf("The corresponding value of this key: %s doesn't exist", key)
 	       return nil, err
        }else if num != 1 {
-	       logger.Error("This key:%s is repeated in the current collection", key)
+	       logger.Errorf("This key:%s is repeated in the current collection", key)
 	       return nil, fmt.Errorf("The key %s is repeated", key)
 
        }else{
@@ -124,6 +124,10 @@ func (dbInst *DB) Put(key string, value []byte) (error) {
 	if err != nil{
 		logger.Errorf("Error in unmarshaling the bytes of value: %s", err.Error())
 		return err
+	}
+	err = collecion_inst.Remove(bson.M{"key" : key})
+	if err != nil{
+		logger.Errorf("The key %s doesn't exist yet", key)
 	}
 	err = collecion_inst.Insert(&Kv_pair{key, &out})
 	if err != nil{
