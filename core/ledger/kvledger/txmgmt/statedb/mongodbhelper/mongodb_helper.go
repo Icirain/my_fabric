@@ -71,7 +71,17 @@ func (dbInst *DB) Open(){
 	if err != nil{
 		panic(fmt.Sprintf("Error while trying to activate the session to the configured database ： %s", err))
 	}
+	dbInst.buildIndex()
 	dbInst.dbstate = opened
+}
+
+func (dbInst *DB)buildIndex() {
+	c := dbInst.session.DB(dbInst.conf.Database_name).C(dbInst.conf.Collection_name)
+	index := mgo.Index{Key: []string{"key"}, Unique:false, DropDups:false, Background: false}
+	err := c.EnsureIndex(index)
+	if err != nil{
+		logger.Errorf("Error during build index, error : %s", err.Error())
+	}
 }
 
 func (dbInst *DB) Close(){
